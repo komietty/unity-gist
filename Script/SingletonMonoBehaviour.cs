@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UGist {
+namespace kmty.gist {
     public abstract class SingletonMonoBehaviour<T> : MonoBehaviour where T : SingletonMonoBehaviour<T> {
         static T instance;
         bool _inited = false;

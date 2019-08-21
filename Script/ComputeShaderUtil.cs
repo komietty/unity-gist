@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-namespace UGist {
+
+namespace kmty.gist {
     public static class ComputeShaderUtil {
         public static void Dispatch1D(ComputeShader compute, int kernel, int count) {
             uint tx, ty, tz;

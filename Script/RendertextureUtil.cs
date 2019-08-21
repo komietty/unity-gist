@@ -2,7 +2,7 @@
 using System.IO;
 using UnityEngine;
 
-namespace UGist {
+namespace kmty.gist {
     public class RenderTextureUtil {
         static public void Build(ref RenderTexture tgt, int w, int h, int d = 0, bool randomWrite = true, RenderTextureFormat f = 0) {
             if (tgt != null) {

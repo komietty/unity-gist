@@ -1,2 +1,2 @@
 # UModular
-`git submodule add git@github.com:komietty/UModular.git Assets/Packages/UModular`
+`git submodule add git@github.com:komietty/unity-gist.git Assets/Packages/unity-gist`

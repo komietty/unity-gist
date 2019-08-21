@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace UGist {
+namespace kmty.gist {
 
     public class ComputeBufferUtil {
 

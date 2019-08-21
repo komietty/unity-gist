@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UGist {
+namespace kmty.gist {
 
     public class ObjectPoolBuffer : System.IDisposable {
 
