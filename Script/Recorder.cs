@@ -3,6 +3,7 @@
 namespace kmty.gist {
     public class Recorder : MonoBehaviour {
 
+        public string folderName;
         public int framerate = 60;
         public int maxRecordSeconds = 180;
         public bool recode = false;
@@ -13,14 +14,14 @@ namespace kmty.gist {
         }
 
         void StartRecording() {
-            System.IO.Directory.CreateDirectory("Capture");
+            System.IO.Directory.CreateDirectory(folderName);
             Time.captureFramerate = framerate;
             frameCount = -1;
         }
 
         void Update() {
-            if (frameCount > 0 && frameCount < framerate * maxRecordSeconds && recode)
-                ScreenCapture.CaptureScreenshot($"Capture/frame{frameCount.ToString("0000")}.png");
+            if (!string.IsNullOrEmpty(folderName) && frameCount > 0 && frameCount < framerate * maxRecordSeconds && recode)
+                ScreenCapture.CaptureScreenshot($"{folderName}/frame{frameCount.ToString("0000")}.png");
             frameCount++;
         }
     }
