@@ -1,38 +1,31 @@
 ﻿#ifndef NOISE4D_INCLUDED
 #define NOISE4D_INCLUDED
 
-float4 mod289(float4 x)
-{
+float4 mod289(float4 x) {
     return x - floor(x * (1.0 / 289.0)) * 289.0;
 }
 
-float mod289(float x)
-{
+float mod289(float x) {
     return x - floor(x * (1.0 / 289.0)) * 289.0;
 }
 
-float4 permute(float4 x)
-{
+float4 permute(float4 x) {
     return mod289(((x * 34.0) + 1.0) * x);
 }
 
-float permute(float x)
-{
+float permute(float x) {
     return mod289(((x * 34.0) + 1.0) * x);
 }
 
-float4 taylorInvSqrt(float4 r)
-{
+float4 taylorInvSqrt(float4 r) {
     return 1.79284291400159 - 0.85373472095314 * r;
 }
 
-float taylorInvSqrt(float r)
-{
+float taylorInvSqrt(float r) {
     return 1.79284291400159 - 0.85373472095314 * r;
 }
 
-float4 grad4(float j, float4 ip)
-{
+float4 grad4(float j, float4 ip) {
     const float4 ones = float4(1.0, 1.0, 1.0, -1.0);
     float4 p, s;
 
@@ -47,8 +40,7 @@ float4 grad4(float j, float4 ip)
 // (sqrt(5) - 1)/4 = F4, used once below
 #define F4 0.309016994374947451
 
-float snoise(float4 v)
-{
+float snoise(float4 v) {
     const float4 C = float4(0.138196601125011, // (5 - sqrt(5))/20  G4
 		0.276393202250021, // 2 * G4
 		0.414589803375032, // 3 * G4
@@ -125,16 +117,14 @@ float snoise(float4 v)
 
 }
 
-float2 snoise2D(float4 x)
-{
+float2 snoise2D(float4 x) {
     float s = snoise(x);
     float s1 = snoise(float4(x.y - 19.1, x.z + 33.4, x.x + 47.2, x.w));
     float2 c = float2(s, s1);
     return c;
 }
 
-float3 snoise3D(float4 x)
-{
+float3 snoise3D(float4 x) {
     float s = snoise(x);
     float s1 = snoise(float4(x.y - 19.1, x.z + 33.4, x.x + 47.2, x.w));
     float s2 = snoise(float4(x.z + 74.2, x.x - 124.5, x.y + 99.4, x.w));
@@ -142,9 +132,7 @@ float3 snoise3D(float4 x)
     return c;
 }
 
-float3 curlNoise(float4 p)
-{
-
+float3 curlNoise(float4 p) {
     const float e = 0.0009765625;
     float4 dx = float4(e, 0.0, 0.0, 0.0);
     float4 dy = float4(0.0, e, 0.0, 0.0);
