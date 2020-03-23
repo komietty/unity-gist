@@ -13,7 +13,7 @@ namespace kmty.gist {
             if (recode) StartRecording();
         }
 
-        void StartRecording() {
+        public void StartRecording() {
             System.IO.Directory.CreateDirectory(folderName);
             Time.captureFramerate = framerate;
             frameCount = -1;
