@@ -23,8 +23,9 @@ struct v2f
 	float2 uv : TEXCOORD0;
 	float3 normal : TEXCOORD1;
 	float3 wpos : TEXCOORD2;
+	float4 screen : TEXCOORD3;
     #if defined(VERTEXLIGHT_ON)
-		float3 vertexLightColor : TEXCOORD3;
+		float3 vertexLightColor : TEXCOORD4;
 	#endif
 };
 
@@ -35,7 +36,7 @@ void ComputeVertexLightColor (inout v2f i)
 			unity_4LightPosX0, unity_4LightPosY0, unity_4LightPosZ0,
 			unity_LightColor[0].rgb, unity_LightColor[1].rgb,
 			unity_LightColor[2].rgb, unity_LightColor[3].rgb,
-			unity_4LightAtten0, i.worldPos, i.normal
+			unity_4LightAtten0, i.wpos, i.normal
 		);
 	#endif
 };
@@ -47,6 +48,7 @@ v2f vert (appdata v)
 	o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 	o.normal = UnityObjectToWorldNormal(v.normal);
 	o.wpos = mul(unity_ObjectToWorld, v.vertex);
+    o.screen = ComputeScreenPos(o.vertex);
     ComputeVertexLightColor(o);
 	return o;
 }
